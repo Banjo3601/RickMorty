@@ -1,18 +1,31 @@
-import React from 'react';
-import {BrowserRoute, Routes, Route, BrowserRouter } from 'react-router-dom';
-import About from './pages/About';
-import Home from './pages/Home';
+import React from "react";
+import { BrowserRouter, Routes, Route, BrowserRoute } from "react-router-dom";
+import Accueil from "./pages/Accueil";
+import Episode from "./pages/Episode";
+import Favoris from "./pages/Favoris";
+import FicheEpisode from "./pages/FicheEpisode";
+import FichePerso from "./pages/FichePerso";
+import PageConnexion from "./pages/PageConnexion";
+import {UserContextProvider} from "./context/UserContext";
 
-const App = () => {
+
+function App() {
   return (
     <BrowserRouter>
+      <UserContextProvider>
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/about" element={<About />}/>
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<Accueil />}/>
+        <Route path="/" element={<Accueil />}/>
+        <Route path="/accueil" element={<Accueil />}/>
+        <Route path="/episode" element={<Episode />}/>
+        <Route path="/favoris" element={<Favoris/>}/>
+        <Route path="/connexion" element={<PageConnexion/>}/>
+        <Route exact path="/ficheperso" element={<FichePerso/>}/>
+        <Route exact path="/ficheepisode" element={<FicheEpisode/>}/>
       </Routes>
+      </UserContextProvider>
     </BrowserRouter>
   );
-};
+}
 
 export default App;

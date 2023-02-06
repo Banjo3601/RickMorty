@@ -21,12 +21,13 @@ const FormulaireConnexion = () => {
     }
 
 
-    const handleSubmit = async e => {
+    const handleInscription = async e => {
         e.preventDefault();
 
         if(validatePassword(password)){
-            setValidation("Vous deveez avoir un mot de passe de 8 caractères minimum pour le mot de passe et " +
+            setValidation("Vous devez avoir un mot de passe de 8 caractères minimum pour le mot de passe et " +
                 "il doit contenir au moins une majuscule, une minuscule et un caractère spéciale.")
+            window.alert(validation);
             return;
         }else{
 
@@ -40,7 +41,7 @@ const FormulaireConnexion = () => {
             )
             formRef.current.reset();
             setValidation("");
-            //console.log(cred);
+            console.dir(cred);
             navigate("/private/private-home");
         }catch(err){
             if(err.code === "auth/invalid-email"){
@@ -50,19 +51,15 @@ const FormulaireConnexion = () => {
                 setValidation("Email already used");
             }
         }
-
-        //console.log("Email :", email);
-        //console.log("Password :", password);
     };
 
     return (
         <>
-            //modalState.signUpModal && (
                 <div>
             <h2>Formulaire de connexion</h2>
             <br/>
             <div className="formulaireConnexion">
-                <form onSubmit={handleSubmit} ref={formRef}>
+                <form onSubmit={handleInscription} ref={formRef}>
                     <label>
                         Email :
                         <input
@@ -81,11 +78,12 @@ const FormulaireConnexion = () => {
                         />
                     </label>
                     <br />
-                    <button type="submit">Submit</button>
+                    <button type="submit" onClick={() => handleInscription()}>Inscription</button>
+                    <br/><br/>
+                    <button type="submit">Connexion</button>
                 </form>
             </div>
                 </div>
-            //)}
         </>
     );
 };

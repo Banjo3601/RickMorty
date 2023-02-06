@@ -4,7 +4,8 @@ import React from 'react';
 const PrivateHome = () => {
     return (
         <div>
-            <h1>Home Sweet Private Home</h1>
+            <h1>L'inscription a réussie !</h1>
+
         </div>
     );
 };

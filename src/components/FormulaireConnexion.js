@@ -24,13 +24,10 @@ const FormulaireConnexion = () => {
     const handleInscription = async e => {
         e.preventDefault();
 
-        if(validatePassword(password)){
-            setValidation("Vous devez avoir un mot de passe de 8 caractères minimum pour le mot de passe et " +
-                "il doit contenir au moins une majuscule, une minuscule et un caractère spéciale.")
-            window.alert(validation);
+        if(!validatePassword(password)){
+            window.alert("Vous devez avoir un mot de passe de 8 caractères minimum et " +
+                "il doit contenir au moins une majuscule, une minuscule et un caractère spéciale.");
             return;
-        }else{
-
         }
 
         try{

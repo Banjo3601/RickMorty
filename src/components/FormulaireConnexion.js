@@ -1,10 +1,13 @@
 import React, {useState, useContext, useRef} from 'react';
 import {UserContext} from "../context/UserContext";
+import {useNavigate} from "react-router-dom";
 
 const FormulaireConnexion = () => {
 
+    const navigate = useNavigate();
+
     const{modalState, toggleModels, signUp} = useContext(UserContext);
-    console.log(modalState, toggleModels);
+    //console.log(modalState, toggleModels);
 
     const [validation, setValidation] = useState("");
 
@@ -37,9 +40,15 @@ const FormulaireConnexion = () => {
             )
             formRef.current.reset();
             setValidation("");
-            console.log(cred);
+            //console.log(cred);
+            navigate("/private/private-home");
         }catch(err){
-
+            if(err.code === "auth/invalid-email"){
+                setValidation("Email format invalid");
+            }
+            if(err.code === "auth/email-alread-in-use"){
+                setValidation("Email already used");
+            }
         }
 
         //console.log("Email :", email);
@@ -48,7 +57,7 @@ const FormulaireConnexion = () => {
 
     return (
         <>
-            {modalState.signUpModal && (
+            //modalState.signUpModal && (
                 <div>
             <h2>Formulaire de connexion</h2>
             <br/>
@@ -76,7 +85,7 @@ const FormulaireConnexion = () => {
                 </form>
             </div>
                 </div>
-            )}
+            //)}
         </>
     );
 };

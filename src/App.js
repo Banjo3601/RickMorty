@@ -7,6 +7,8 @@ import FicheEpisode from "./pages/FicheEpisode";
 import FichePerso from "./pages/FichePerso";
 import PageConnexion from "./pages/PageConnexion";
 import {UserContextProvider} from "./context/UserContext";
+import Private from "./pages/Private/Private";
+import PrivateHome from "./pages/Private/PrivateHome/PrivateHome";
 
 
 function App() {
@@ -20,6 +22,9 @@ function App() {
         <Route path="/episode" element={<Episode />}/>
         <Route path="/favoris" element={<Favoris/>}/>
         <Route path="/connexion" element={<PageConnexion/>}/>
+          <Route path="/private" element={<Private/>}>
+              <Route path="/private/private-home" element={<PrivateHome/>}/>
+          </Route>
         <Route exact path="/ficheperso" element={<FichePerso/>}/>
         <Route exact path="/ficheepisode" element={<FicheEpisode/>}/>
       </Routes>

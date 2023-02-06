@@ -42,42 +42,47 @@ const FormulaireConnexion = () => {
             navigate("/private/private-home");
         }catch(err){
             if(err.code === "auth/invalid-email"){
-                setValidation("Email format invalid");
+                window.alert("Email format invalid");
             }
             if(err.code === "auth/email-alread-in-use"){
-                setValidation("Email already used");
+                window.alert("Email already used");
             }
         }
     };
 
     return (
         <>
-                <div>
-            <h2>Formulaire de connexion</h2>
+                <div className="formulaireConnexion">
+            <h2>Formulaire de connexion/inscription</h2>
             <br/>
-            <div className="formulaireConnexion">
+            <div >
                 <form onSubmit={handleInscription} ref={formRef}>
+                    <br/>
                     <label>
                         Email :
                         <input
+                            className="entre"
                             type="email"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
                     </label>
                     <br />
+                    <br />
                     <label>
                         Password :
                         <input
+                            className="entre"
                             type="password"
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                         />
                     </label>
                     <br />
-                    <button type="submit" onClick={() => handleInscription()}>Inscription</button>
+                    <br />
+                    <button className="boutonInscriptionConnexion" type="submit" onClick={() => handleInscription()}>Inscription</button>
                     <br/><br/>
-                    <button type="submit">Connexion</button>
+                    <button className="boutonInscriptionConnexion" type="submit">Connexion (ne fonctionne pas encore)</button>
                 </form>
             </div>
                 </div>

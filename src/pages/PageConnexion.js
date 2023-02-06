@@ -7,7 +7,7 @@ const PageConnexion = () => {
     return (
         <div>
             <Logo/>
-            <h1 className='titrePage'>Connexion</h1>
+            <h1 className='titrePage'>Connexion|Inscription</h1>
             <br/>
             <Menu/>
             <br/>
